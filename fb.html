@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dead Zone: Why Your Glutes Stopped Working | Dynamic Cyclist</title>
+  <!-- META PIXEL: insert DC pixel ID here -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]);t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_ru5aBEst81batGjqgUh88EFHlYCxEikwHKEjdrkN0MW', {api_host: 'https://us.i.posthog.com'});
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0a;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+    nav {
+      padding: 20px 24px;
+      border-bottom: 1px solid #1f1f1f;
+    }
+    .logo {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+    }
+    .logo span { color: #e8401c; }
+    main {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      background: #e8401c;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .subhead {
+      font-size: 17px;
+      color: #aaa;
+      line-height: 1.6;
+      margin-bottom: 48px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    /* Video Player */
+    .video-wrap {
+      position: relative;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      margin-bottom: 40px;
+      cursor: pointer;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .video-wrap:hover .play-btn { transform: scale(1.08); }
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      background: rgba(232,64,28,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .play-btn svg { margin-left: 5px; }
+    .video-title {
+      color: #bbb;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+    }
+    .video-duration {
+      position: absolute;
+      bottom: 12px;
+      right: 14px;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 2px;
+    }
+    .stats-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+    .stat-line {
+      color: #ccc;
+      font-size: 15px;
+      border-bottom: 1px solid #1f1f1f;
+      padding-bottom: 12px;
+    }
+    .stat-line:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-line strong { color: #fff; }
+    .transcript-section {
+      background: #111;
+      border: 1px solid #222;
+      padding: 32px;
+      margin-bottom: 48px;
+      text-align: left;
+    }
+    .transcript-section h3 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .transcript-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .transcript-section ul li {
+      padding: 10px 0;
+      border-bottom: 1px solid #1e1e1e;
+      font-size: 15px;
+      color: #ccc;
+      padding-left: 20px;
+      position: relative;
+    }
+    .transcript-section ul li:last-child { border-bottom: none; }
+    .transcript-section ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #e8401c;
+      font-weight: bold;
+    }
+    .testimonials {
+      margin-bottom: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .testimonial {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      padding: 20px 24px;
+      text-align: left;
+    }
+    .testimonial p {
+      font-size: 14px;
+      color: #bbb;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .testimonial .attrib {
+      font-size: 12px;
+      color: #555;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .cta-section { text-align: center; }
+    .cta-btn {
+      display: inline-block;
+      background: #e8401c;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      padding: 18px 44px;
+      text-decoration: none;
+      border-radius: 3px;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      margin-bottom: 14px;
+    }
+    .cta-btn:hover { background: #c73418; }
+    .cta-secondary {
+      font-size: 13px;
+      color: #555;
+      margin-top: 12px;
+    }
+    @media (max-width: 600px) {
+      main { padding: 40px 20px 70px; }
+      .transcript-section { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="https://new.dynamiccyclist.com" class="logo">Dynamic <span>Cyclist</span></a>
+  </nav>
+
+  <main>
+    <div class="badge">New &nbsp;·&nbsp; Cycling Performance</div>
+
+    <h1>There's a Dead Zone in Your Pedal Stroke.</h1>
+
+    <p class="subhead">It's not your technique. It's not your bike. It's a muscle that stopped firing — and it's costing you watts on every single revolution.</p>
+
+    <div class="video-wrap">
+      <div class="play-btn">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <polygon points="8,4 24,14 8,24" fill="white"/>
+        </svg>
+      </div>
+      <div class="video-title">The Dead Zone: Why Your Glutes Stopped Working</div>
+      <div class="video-duration">4:32</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-line"><strong>47,000+</strong> cyclists have watched this.</div>
+      <div class="stat-line">Average ride improvement reported: <strong>2.3 mph over 2 hours.</strong></div>
+      <div class="stat-line">Takes <strong>15 minutes a day</strong> to fix.</div>
+    </div>
+
+    <div class="transcript-section">
+      <h3>Can't watch right now? Here's what we cover:</h3>
+      <ul>
+        <li>What the "dead zone" actually is — and why most cyclists have it without knowing</li>
+        <li>Why cycling specifically causes glute inhibition, even in strong, fit riders</li>
+        <li>The 3-step reactivation sequence that switches the glutes back on — in the right order</li>
+        <li>Why generic stretching and foam rolling consistently fail to address the actual pattern</li>
+        <li>What the fix looks like in practice — and how quickly you feel the difference on the bike</li>
+      </ul>
+    </div>
+
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>"First time in three years I've done back-to-back hard days without my hip giving out on day two."</p>
+        <div class="attrib">— Mark T., 51 · Vancouver, BC</div>
+      </div>
+      <div class="testimonial">
+        <p>"I thought losing power after an hour was just how it was. It's not. Week three — completely different."</p>
+        <div class="attrib">— Dave R., 46 · Manchester, UK</div>
+      </div>
+      <div class="testimonial">
+        <p>"My coach noticed the change before I did. More consistent power from the same effort. That's it."</p>
+        <div class="attrib">— Chris L., 44 · Austin, TX</div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <a href="https://new.dynamiccyclist.com" class="cta-btn" onclick="posthog.capture('cta_clicked', {page: 'fb'})">Start Fixing It Today — 7 Days Free</a>
+      <div class="cta-secondary">No equipment needed &nbsp;·&nbsp; 15 min/day &nbsp;·&nbsp; Cancel anytime.</div>
+    </div>
+  </main>
+</body>
+</html>
