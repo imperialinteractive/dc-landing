@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's Holding Back Your Ride? | Dynamic Cyclist Quiz</title>
+  <meta name="description" content="6 quick questions. A personalized diagnosis. Find out exactly what's limiting your performance and how to fix it.">
+  <!-- META PIXEL: insert DC pixel ID here -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_ru5aBEst81batGjqgUh88EFHlYCxEikwHKEjdrkN0MW', {api_host: 'https://us.i.posthog.com'});
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green: #2d6a3f;
+      --green-dark: #1f4d2d;
+      --green-light: #e8f5ec;
+      --text: #1a1a1a;
+      --text-light: #555;
+      --white: #fff;
+      --gray: #f5f5f5;
+      --border: #e0e0e0;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text); line-height: 1.6;
+      background: var(--white); min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--white); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo { color: var(--text); font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; }
+    .nav-logo span { color: var(--green); }
+    .nav-link { color: var(--green); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+
+    /* QUIZ WRAPPER */
+    .quiz-wrapper {
+      max-width: 700px; margin: 0 auto;
+      padding: 48px 24px;
+      min-height: calc(100vh - 64px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    /* STEPS - visibility */
+    .step { display: none; animation: fadeIn 0.35s ease forwards; }
+    .step.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* INTRO SCREEN */
+    .intro-eyebrow {
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--green); margin-bottom: 16px;
+    }
+    .intro h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900; letter-spacing: -1px; line-height: 1.1; margin-bottom: 20px;
+    }
+    .intro-sub { font-size: 1.15rem; color: var(--text-light); margin-bottom: 36px; line-height: 1.7; }
+    .btn-green {
+      display: inline-block; background: var(--green); color: #fff;
+      padding: 18px 40px; border-radius: 10px; font-weight: 800; font-size: 1.1rem;
+      border: none; cursor: pointer; transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(45,106,63,0.3); text-decoration: none;
+    }
+    .btn-green:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,106,63,0.4); }
+    .trust-line { display: flex; align-items: center; gap: 10px; margin-top: 20px; color: var(--text-light); font-size: 0.9rem; }
+    .trust-line::before { content: '✓'; color: var(--green); font-weight: 700; }
+
+    /* PROGRESS BAR */
+    .progress-wrap { margin-bottom: 40px; }
+    .progress-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .progress-label { font-size: 0.85rem; font-weight: 600; color: var(--text-light); }
+    .progress-count { font-size: 0.85rem; font-weight: 700; color: var(--green); }
+    .progress-bar {
+      height: 6px; background: #e8e8e8; border-radius: 10px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: var(--green); border-radius: 10px;
+      transition: width 0.4s ease;
+    }
+
+    /* QUESTION */
+    .question-num { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    .question-text { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 32px; line-height: 1.3; }
+    .options-list { display: flex; flex-direction: column; gap: 12px; }
+    .option-btn {
+      display: flex; align-items: center; gap: 16px;
+      background: var(--white); border: 2px solid var(--border);
+      border-radius: 12px; padding: 18px 22px; cursor: pointer;
+      transition: all 0.18s; text-align: left; font-size: 1rem;
+      font-weight: 500; color: var(--text); width: 100%;
+    }
+    .option-btn:hover {
+      border-color: var(--green); background: var(--green-light);
+      transform: translateX(4px);
+    }
+    .option-letter {
+      display: flex; align-items: center; justify-content: center;
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--gray); color: var(--text-light);
+      font-weight: 700; font-size: 0.85rem; flex-shrink: 0;
+      transition: all 0.18s;
+    }
+    .option-btn:hover .option-letter { background: var(--green); color: #fff; }
+
+    /* RESULT */
+    .result-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-light); border: 1px solid rgba(45,106,63,0.3);
+      color: var(--green); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 8px 16px; border-radius: 6px; margin-bottom: 20px;
+    }
+    .result h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 900; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 24px; }
+    .result-explain {
+      font-size: 1.05rem; color: var(--text-light); line-height: 1.8; margin-bottom: 12px;
+    }
+    .result-meaning {
+      background: #fff8f0; border-left: 4px solid #f0a500;
+      padding: 20px 24px; border-radius: 0 10px 10px 0;
+      margin: 24px 0; font-size: 1rem; line-height: 1.7;
+    }
+    .result-meaning strong { color: #b87500; }
+    .plan-section { background: var(--green-light); border-radius: 16px; padding: 28px; margin: 28px 0; }
+    .plan-section h3 { font-size: 1.1rem; font-weight: 800; color: var(--green); margin-bottom: 16px; }
+    .plan-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .plan-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.95rem; line-height: 1.6;
+    }
+    .plan-list li::before {
+      content: '✓'; color: var(--green); font-weight: 900;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .bridge-text {
+      font-size: 1.1rem; font-weight: 700; color: var(--text);
+      margin: 24px 0 8px; text-align: center;
+    }
+    .program-pills {
+      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+      margin: 16px 0 28px;
+    }
+    .pill {
+      background: var(--gray); border-radius: 100px;
+      padding: 8px 18px; font-size: 0.85rem; font-weight: 600; color: var(--text-light);
+    }
+    .result-cta {
+      display: block; width: 100%; text-align: center;
+      background: var(--green); color: #fff;
+      padding: 20px 32px; border-radius: 12px; font-weight: 800; font-size: 1.1rem;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: all 0.2s; box-shadow: 0 4px 20px rgba(45,106,63,0.35);
+      margin-bottom: 14px;
+    }
+    .result-cta:hover { background: var(--green-dark); transform: translateY(-2px); }
+    .result-cta-note { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-bottom: 32px; }
+
+    /* EMAIL CAPTURE */
+    .email-capture {
+      background: var(--gray); border-radius: 16px; padding: 28px;
+      border: 1px solid var(--border);
+    }
+    .email-capture h4 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+    .email-capture p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px; }
+    .email-form { display: flex; gap: 10px; flex-wrap: wrap; }
+    .email-form input[type="email"] {
+      flex: 1; min-width: 200px;
+      padding: 14px 18px; border: 2px solid var(--border);
+      border-radius: 8px; font-size: 1rem; outline: none;
+      transition: border 0.2s;
+    }
+    .email-form input[type="email"]:focus { border-color: var(--green); }
+    .email-form button {
+      background: var(--green); color: #fff; border: none;
+      padding: 14px 24px; border-radius: 8px; font-weight: 700;
+      font-size: 0.95rem; cursor: pointer; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .email-form button:hover { background: var(--green-dark); }
+    .email-success { color: var(--green); font-weight: 700; font-size: 0.95rem; display: none; padding: 10px 0; }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 32px; border-top: 1px solid var(--border); }
+    footer p { color: #aaa; font-size: 0.85rem; }
+
+    @media (max-width: 480px) {
+      .quiz-wrapper { padding: 32px 16px; }
+      nav { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="https://new.dynamiccyclist.com" class="nav-logo">Dynamic<span>Cyclist</span></a>
+  <a href="https://new.dynamiccyclist.com" class="nav-link">dynamiccyclist.com →</a>
+</nav>
+
+<div class="quiz-wrapper">
+
+  <!-- INTRO -->
+  <div class="step active" id="step-intro">
+    <div class="intro">
+      <div class="intro-eyebrow">Free Rider Assessment</div>
+      <h1>Find Out What's Holding Back Your Ride</h1>
+      <p class="intro-sub">6 quick questions. A personalized diagnosis. Takes 90 seconds.</p>
+      <button class="btn-green" onclick="startQuiz()">Start the Quiz →</button>
+      <div class="trust-line">Taken by 47,000+ cyclists</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="step" id="step-1">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label">Question 1 of 6</span>
+        <span class="progress-count">17%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:17%"></div></div>
+    </div>
+    <div class="question-num">Question 1</div>
+    <div class="question-text">How long have you been cycling?</div>
+    <div class="options-list">
+      <button class="option-btn" onclick="answer(1,'a')"><span class="option-letter">A</span>Less than 1 year</button>
+      <button class="option-btn" onclick="answer(1,'b')"><span class="option-letter">B</span>1–3 years</button>
+      <button class="option-btn" onclick="answer(1,'c')"><span class="option-letter">C</span>3–10 years</button>
+      <button class="option-btn" onclick="answer(1,'d')"><span class="option-letter">D</span>10+ years</button>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="step" id="step-2">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label">Question 2 of 6</span>
+        <span class="progress-count">33%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:33%"></div></div>
+    </div>
+    <div class="question-num">Question 2</div>
+    <div class="question-text">How often do you ride?</div>
+    <div class="options-list">
+      <button class="option-btn" onclick="answer(2,'a')"><span class="option-letter">A</span>Once a week or less</button>
+      <button class="option-btn" onclick="answer(2,'b')"><span class="option-letter">B</span>2–3x per week</button>
+      <button class="option-btn" onclick="answer(2,'c')"><span class="option-letter">C</span>4–5x per week</button>
+      <button class="option-btn" onclick="answer(2,'d')"><span class="option-letter">D</span>Almost every day</button>
+    </div>
+  </div>
+
+  <!-- Q3 — KEY QUESTION FOR RESULT -->
+  <div class="step" id="step-3">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label">Question 3 of 6</span>
+        <span class="progress-count">50%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+    </div>
+    <div class="question-num">Question 3</div>
+    <div class="question-text">What's your biggest issue on the bike right now?</div>
+    <div class="options-list">
+      <button class="option-btn" onclick="answer(3,'A')"><span class="option-letter">A</span>Knee pain or discomfort</button>
+      <button class="option-btn" onclick="answer(3,'B')"><span class="option-letter">B</span>Hip tightness or back pain</button>
+      <button class="option-btn" onclick="answer(3,'C')"><span class="option-letter">C</span>Feeling stiff and restricted</button>
+      <button class="option-btn" onclick="answer(3,'C')"><span class="option-letter">D</span>I'm losing power and don't know why</button>
+      <button class="option-btn" onclick="answer(3,'C')"><span class="option-letter">E</span>I feel fine but want to stay that way</button>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="step" id="step-4">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label">Question 4 of 6</span>
+        <span class="progress-count">67%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:67%"></div></div>
+    </div>
+    <div class="question-num">Question 4</div>
+    <div class="question-text">When does the discomfort usually hit?</div>
+    <div class="options-list">
+      <button class="option-btn" onclick="answer(4,'a')"><span class="option-letter">A</span>Within the first 20 minutes</button>
+      <button class="option-btn" onclick="answer(4,'b')"><span class="option-letter">B</span>After 45–60 minutes</button>
+      <button class="option-btn" onclick="answer(4,'c')"><span class="option-letter">C</span>Only on longer rides (2+ hrs)</button>
+      <button class="option-btn" onclick="answer(4,'d')"><span class="option-letter">D</span>After the ride, not during</button>
+      <button class="option-btn" onclick="answer(4,'e')"><span class="option-letter">E</span>I don't have discomfort</button>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="step" id="step-5">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label">Question 5 of 6</span>
+        <span class="progress-count">83%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:83%"></div></div>
+    </div>
+    <div class="question-num">Question 5</div>
+    <div class="question-text">Have you tried to fix it?</div>
+    <div class="options-list">
+      <button class="option-btn" onclick="answer(5,'a')"><span class="option-letter">A</span>Yes — physio or sports massage</button>
+      <button class="option-btn" onclick="answer(5,'b')"><span class="option-letter">B</span>Yes — stretching on my own</button>
+      <button class="option-btn" onclick="answer(5,'c')"><span class="option-letter">C</span>Yes — bike fit</button>
+      <button class="option-btn" onclick="answer(5,'d')"><span class="option-letter">D</span>I've tried a few things with no real results</button>
+      <button class="option-btn" onclick="answer(5,'e')"><span class="option-letter">E</span>No, not yet</button>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="step" id="step-6">
+    <div class="progress-wrap">
+      <div class="progress-meta">
+        <span class="progress-label">Question 6 of 6</span>
+        <span class="progress-count">100%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+    </div>
+    <div class="question-num">Question 6</div>
+    <div class="question-text">What's your main goal right now?</div>
+    <div class="options-list">
+      <button class="option-btn" onclick="answer(6,'a')"><span class="option-letter">A</span>Ride pain free</button>
+      <button class="option-btn" onclick="answer(6,'b')"><span class="option-letter">B</span>Get faster and more powerful</button>
+      <button class="option-btn" onclick="answer(6,'c')"><span class="option-letter">C</span>Ride longer without breaking down</button>
+      <button class="option-btn" onclick="answer(6,'d')"><span class="option-letter">D</span>Just keep riding as I age</button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div class="step" id="step-loading">
+    <div style="text-align:center; padding: 60px 0;">
+      <div style="font-size:3rem; margin-bottom:20px; animation: spin 1s linear infinite; display:inline-block;">⚙</div>
+      <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:10px;">Analysing your responses…</h3>
+      <p style="color:var(--text-light);">Building your personalized diagnosis</p>
+    </div>
+  </div>
+
+  <!-- RESULT A: Joint Stress Syndrome -->
+  <div class="step" id="result-A">
+    <div class="result">
+      <div class="result-badge">🩺 Your Diagnosis</div>
+      <h2>Joint Stress Syndrome</h2>
+      <p class="result-explain">Your cycling position is putting repetitive stress on joints that aren't supported by balanced muscles. Specifically, your IT band and patellar tracking are absorbing load that your glutes and hip stabilizers should be handling — and they're not equipped for it.</p>
+      <p class="result-explain">Every pedal stroke reinforces this pattern. The knee isn't the problem — it's where the problem shows up.</p>
+      <div class="result-meaning">
+        <strong>What this means for you:</strong> Left untreated, this pattern gets worse — not better. Most cyclists who ignore it end up taking involuntary months off the bike. The good news: the root cause is fixable.
+      </div>
+      <div class="plan-section">
+        <h3>Here's your plan:</h3>
+        <ul class="plan-list">
+          <li>Activate your glutes and hip stabilizers so they take load off the knee joint</li>
+          <li>Release the IT band tension through targeted hip and lateral chain work — not just foam rolling</li>
+          <li>Reset patellar tracking with progressive movement sequences designed for the cycling position</li>
+        </ul>
+      </div>
+      <p class="bridge-text">This is exactly what Dynamic Cyclist was built to fix.</p>
+      <div class="program-pills">
+        <span class="pill">⏱ 15–20 min/day</span>
+        <span class="pill">🚴 Cyclist-specific</span>
+        <span class="pill">🎯 Sequential method</span>
+        <span class="pill">📅 Feel it in 2 weeks</span>
+      </div>
+      <a href="https://new.dynamiccyclist.com" class="result-cta" onclick="posthog.capture('cta_clicked',{page:'v7',location:'result_A'})">Start Your Free 7-Day Trial — $0 Today</a>
+      <p class="result-cta-note">7-day free trial · Then $9.99/mo or $87/yr · Cancel anytime</p>
+      <div class="email-capture">
+        <h4>📬 Get Your Full Results by Email</h4>
+        <p>We'll send your complete diagnosis + a custom starter plan to your inbox.</p>
+        <form class="email-form" onsubmit="submitEmail(event,'Joint Stress Syndrome')">
+          <input type="hidden" name="result_type" value="Joint Stress Syndrome">
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Send My Results</button>
+        </form>
+        <div class="email-success" id="success-A">✓ Sent! Check your inbox.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT B: Posterior Chain Shutdown -->
+  <div class="step" id="result-B">
+    <div class="result">
+      <div class="result-badge">🩺 Your Diagnosis</div>
+      <h2>Posterior Chain Shutdown</h2>
+      <p class="result-explain">Your glutes and hamstrings have essentially gone to sleep. Your hip flexors and lower back are overcompensating for everything — which is why you feel tight, restricted, and achy after rides.</p>
+      <p class="result-explain">This is the #1 pattern we see in cyclists who ride 3–5x per week. The repetitive flexion of cycling shortens your hip flexors and teaches your glutes to disengage. The longer it goes unaddressed, the deeper the pattern sets in.</p>
+      <div class="result-meaning">
+        <strong>What this means for you:</strong> This is fixable — but you need a specific sequence, not random stretching. Stretching alone doesn't reactivate inhibited muscles. You need a proper reset.
+      </div>
+      <div class="plan-section">
+        <h3>Here's your plan:</h3>
+        <ul class="plan-list">
+          <li>Systematically release overactive hip flexors and lower back muscles that are locked in overdrive</li>
+          <li>Reactivate and strengthen your glutes and hamstrings through progressive loading patterns</li>
+          <li>Re-establish the correct muscle sequencing so your posterior chain fires before your back compensates</li>
+        </ul>
+      </div>
+      <p class="bridge-text">This is exactly what Dynamic Cyclist was built to fix.</p>
+      <div class="program-pills">
+        <span class="pill">⏱ 15–20 min/day</span>
+        <span class="pill">🚴 Cyclist-specific</span>
+        <span class="pill">🎯 Sequential method</span>
+        <span class="pill">📅 Feel it in 2 weeks</span>
+      </div>
+      <a href="https://new.dynamiccyclist.com" class="result-cta" onclick="posthog.capture('cta_clicked',{page:'v7',location:'result_B'})">Start Your Free 7-Day Trial — $0 Today</a>
+      <p class="result-cta-note">7-day free trial · Then $9.99/mo or $87/yr · Cancel anytime</p>
+      <div class="email-capture">
+        <h4>📬 Get Your Full Results by Email</h4>
+        <p>We'll send your complete diagnosis + a custom starter plan to your inbox.</p>
+        <form class="email-form" onsubmit="submitEmail(event,'Posterior Chain Shutdown')">
+          <input type="hidden" name="result_type" value="Posterior Chain Shutdown">
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Send My Results</button>
+        </form>
+        <div class="email-success" id="success-B">✓ Sent! Check your inbox.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULT C: Mobility Ceiling -->
+  <div class="step" id="result-C">
+    <div class="result">
+      <div class="result-badge">🩺 Your Diagnosis</div>
+      <h2>Mobility Ceiling</h2>
+      <p class="result-explain">You're not in serious pain — but your range of motion is quietly limiting how much power you can actually produce and transfer. Think of it as a rev limiter on your engine. Your flexibility ceiling is your performance ceiling.</p>
+      <p class="result-explain">Restricted hip flexors reduce your power stroke length. Tight hamstrings prevent you from holding an aerodynamic position without pain. Stiff thoracic mobility kills your ability to breathe efficiently under load.</p>
+      <div class="result-meaning">
+        <strong>What this means for you:</strong> Cyclists who address this early ride stronger, longer, and avoid the injuries that take others out of the sport. You're in the ideal window to fix this before it becomes a problem.
+      </div>
+      <div class="plan-section">
+        <h3>Here's your plan:</h3>
+        <ul class="plan-list">
+          <li>Expand hip flexor and hip extension range to unlock more power per pedal revolution</li>
+          <li>Improve hamstring and posterior chain flexibility to hold an efficient aero position without compensation</li>
+          <li>Develop thoracic mobility and core stability to support power transfer and breathing efficiency</li>
+        </ul>
+      </div>
+      <p class="bridge-text">This is exactly what Dynamic Cyclist was built to fix.</p>
+      <div class="program-pills">
+        <span class="pill">⏱ 15–20 min/day</span>
+        <span class="pill">🚴 Cyclist-specific</span>
+        <span class="pill">🎯 Sequential method</span>
+        <span class="pill">📅 Feel it in 2 weeks</span>
+      </div>
+      <a href="https://new.dynamiccyclist.com" class="result-cta" onclick="posthog.capture('cta_clicked',{page:'v7',location:'result_C'})">Start Your Free 7-Day Trial — $0 Today</a>
+      <p class="result-cta-note">7-day free trial · Then $9.99/mo or $87/yr · Cancel anytime</p>
+      <div class="email-capture">
+        <h4>📬 Get Your Full Results by Email</h4>
+        <p>We'll send your complete diagnosis + a custom starter plan to your inbox.</p>
+        <form class="email-form" onsubmit="submitEmail(event,'Mobility Ceiling')">
+          <input type="hidden" name="result_type" value="Mobility Ceiling">
+          <input type="email" name="email" placeholder="your@email.com" required>
+          <button type="submit">Send My Results</button>
+        </form>
+        <div class="email-success" id="success-C">✓ Sent! Check your inbox.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Dynamic Cyclist. All rights reserved.</p>
+</footer>
+
+<script>
+  var currentResult = 'C';
+  var answers = {};
+
+  function showStep(id) {
+    document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+    var el = document.getElementById(id);
+    if (el) { el.classList.add('active'); }
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  function startQuiz() {
+    showStep('step-1');
+  }
+
+  function answer(qNum, val) {
+    answers[qNum] = val;
+    if (qNum === 3) {
+      currentResult = val; // A, B, or C
+    }
+    if (qNum < 6) {
+      showStep('step-' + (qNum + 1));
+    } else {
+      // Show loading then result
+      showStep('step-loading');
+      setTimeout(function() {
+        showStep('result-' + currentResult);
+        posthog.capture('quiz_completed', {page: 'v7', result: currentResult, answers: answers});
+      }, 1800);
+    }
+  }
+
+  function submitEmail(e, resultType) {
+    e.preventDefault();
+    var form = e.target;
+    var email = form.querySelector('input[type="email"]').value;
+    var suffix = resultType === 'Joint Stress Syndrome' ? 'A' : (resultType === 'Posterior Chain Shutdown' ? 'B' : 'C');
+
+    fetch('https://formspree.io/f/joelraitt@gmail.com', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({email: email, result_type: resultType, page: 'v7'})
+    }).then(function(r) {
+      var success = document.getElementById('success-' + suffix);
+      if (success) { success.style.display = 'block'; }
+      form.style.display = 'none';
+      posthog.capture('email_captured', {page: 'v7', result: resultType});
+    }).catch(function() {
+      var success = document.getElementById('success-' + suffix);
+      if (success) { success.style.display = 'block'; }
+      form.style.display = 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

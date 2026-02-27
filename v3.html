@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The 3 Joints Silently Killing Your Ride | Dynamic Cyclist</title>
+  <meta name="description" content="Over 58% of recreational cyclists deal with chronic joint pain. Here's what's actually breaking down — and how to stop it before it stops you.">
+  <!-- META PIXEL: insert DC pixel ID here -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_ru5aBEst81batGjqgUh88EFHlYCxEikwHKEjdrkN0MW', {api_host: 'https://us.i.posthog.com'});
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent: #e85d04;
+      --accent-dark: #c44d02;
+      --hero-bg: #0f0f0f;
+      --text: #1a1a1a;
+      --text-light: #555;
+      --white: #fff;
+      --gray: #f8f8f8;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15,15,15,0.95); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo { color: #fff; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: #fff; text-decoration: none;
+      padding: 10px 22px; border-radius: 6px; font-weight: 700; font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent-dark); }
+
+    /* HERO */
+    .hero {
+      background: var(--hero-bg);
+      padding: 120px 5% 80px;
+      min-height: 85vh;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(232,93,4,0.12) 0%, transparent 60%);
+    }
+    .hero-inner { max-width: 800px; position: relative; }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(232,93,4,0.15); border: 1px solid rgba(232,93,4,0.4);
+      color: var(--accent); font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 6px 14px; border-radius: 4px; margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900; color: #fff; line-height: 1.1;
+      letter-spacing: -1.5px; margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: rgba(255,255,255,0.75); max-width: 620px; margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent); color: #fff; text-decoration: none;
+      padding: 16px 36px; border-radius: 8px; font-weight: 800; font-size: 1.1rem;
+      transition: all 0.2s; border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(232,93,4,0.4);
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,93,4,0.5); }
+    .hero-trust { color: rgba(255,255,255,0.5); font-size: 0.9rem; }
+
+    /* HOOK BANNER */
+    .hook-banner {
+      background: var(--accent);
+      padding: 24px 5%;
+      text-align: center;
+    }
+    .hook-banner p {
+      color: #fff; font-size: clamp(1rem, 2vw, 1.15rem);
+      font-weight: 600; max-width: 800px; margin: 0 auto; line-height: 1.6;
+    }
+    .hook-banner p strong { font-weight: 900; }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+    .section-white { background: var(--white); }
+    .section-gray { background: var(--gray); }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+    }
+    .section-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--text-light); max-width: 640px; margin-bottom: 48px; line-height: 1.7; }
+
+    /* JOINT CARDS */
+    .joints-grid { display: grid; gap: 32px; }
+    .joint-card {
+      background: var(--white);
+      border: 1px solid #e8e8e8;
+      border-radius: 16px;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .joint-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: var(--accent);
+    }
+    .joint-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      font-weight: 900; font-size: 1.1rem; margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .joint-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+    .joint-icon { font-size: 2.2rem; }
+    .joint-title { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.5px; }
+    .joint-subtitle { color: var(--text-light); font-size: 0.9rem; }
+    .joint-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 24px; }
+    .joint-block h4 {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+    .joint-block p { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
+    .warning-signs { margin-top: 24px; padding: 20px; background: rgba(232,93,4,0.06); border-radius: 10px; border-left: 3px solid var(--accent); }
+    .warning-signs h4 { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .warning-signs ul { list-style: none; }
+    .warning-signs ul li { font-size: 0.9rem; color: var(--text); padding: 4px 0; padding-left: 20px; position: relative; }
+    .warning-signs ul li::before { content: '⚠'; position: absolute; left: 0; font-size: 0.8rem; }
+
+    /* ROOT CAUSE */
+    .root-cause {
+      background: var(--hero-bg);
+      color: #fff;
+      padding: 80px 5%;
+      text-align: center;
+    }
+    .root-cause .section-label { color: var(--accent); }
+    .root-cause .section-h2 { color: #fff; }
+    .root-cause .section-sub { color: rgba(255,255,255,0.7); max-width: 700px; margin: 0 auto 32px; }
+    .root-cause-box {
+      max-width: 700px; margin: 0 auto;
+      background: rgba(232,93,4,0.1); border: 1px solid rgba(232,93,4,0.3);
+      border-radius: 16px; padding: 36px;
+    }
+    .root-cause-box p { color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.8; }
+    .root-cause-box p strong { color: #fff; }
+
+    /* SOLUTION */
+    .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .solution-left .lead {
+      font-size: 1.2rem; color: var(--text-light); line-height: 1.8; margin-bottom: 28px;
+    }
+    .features-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+    .features-list li {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px; background: var(--gray); border-radius: 10px;
+    }
+    .feat-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .feat-text strong { display: block; font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+    .feat-text span { font-size: 0.9rem; color: var(--text-light); }
+    .solution-right {
+      background: var(--hero-bg); border-radius: 20px; padding: 40px;
+      color: #fff; text-align: center;
+    }
+    .solution-right .program-name { color: var(--accent); font-weight: 900; font-size: 1.5rem; margin-bottom: 12px; }
+    .solution-right p { color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.7; margin-bottom: 24px; }
+    .solution-right .btn-primary { width: 100%; text-align: center; display: block; }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .testi-card {
+      background: var(--white);
+      border: 1px solid #e8e8e8; border-radius: 16px; padding: 32px;
+      position: relative;
+    }
+    .testi-stars { color: var(--accent); font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testi-quote { font-size: 1rem; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testi-quote::before { content: '"'; font-size: 3rem; color: var(--accent); opacity: 0.3; display: block; line-height: 0.8; margin-bottom: 8px; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1rem; flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 0.95rem; }
+    .testi-detail { font-size: 0.8rem; color: var(--text-light); }
+
+    /* PRICING */
+    .pricing-section { background: var(--hero-bg); padding: 80px 5%; text-align: center; }
+    .pricing-section .section-h2 { color: #fff; }
+    .pricing-section .section-sub { color: rgba(255,255,255,0.7); margin: 0 auto 48px; }
+    .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 700px; margin: 0 auto 40px; }
+    .price-card {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px; padding: 32px; color: #fff; position: relative;
+    }
+    .price-card.featured {
+      background: rgba(232,93,4,0.15); border-color: var(--accent);
+    }
+    .price-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff; font-size: 0.75rem; font-weight: 700;
+      padding: 4px 16px; border-radius: 20px; letter-spacing: 0.5px; white-space: nowrap;
+    }
+    .price-label { font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .price-amount { font-size: 3rem; font-weight: 900; line-height: 1; }
+    .price-amount sup { font-size: 1.2rem; vertical-align: top; margin-top: 10px; }
+    .price-amount span { font-size: 1rem; font-weight: 400; color: rgba(255,255,255,0.6); }
+    .price-note { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-top: 8px; }
+    .trial-note { color: rgba(255,255,255,0.6); font-size: 1rem; margin-bottom: 32px; }
+    .trial-note strong { color: #fff; }
+
+    /* FOOTER */
+    footer { background: #0a0a0a; padding: 32px 5%; text-align: center; }
+    footer p { color: rgba(255,255,255,0.3); font-size: 0.85rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .solution-grid { grid-template-columns: 1fr; }
+      .joint-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 4%; }
+      .hero { padding: 100px 4% 60px; min-height: auto; }
+      section { padding: 60px 4%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://new.dynamiccyclist.com" class="nav-logo">Dynamic<span>Cyclist</span></a>
+  <a href="https://new.dynamiccyclist.com" class="nav-cta" onclick="posthog.capture('cta_clicked',{page:'v3',location:'nav'})">Start Free Trial →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Joint Health &amp; Performance</div>
+    <h1>The 3 Joints <span>Silently Killing</span> Your Ride</h1>
+    <p class="hero-sub">Most cyclists treat the symptom. Here's what's actually breaking down — and how to stop it before it stops you.</p>
+    <div class="hero-cta-group">
+      <a href="https://new.dynamiccyclist.com" class="btn-primary" onclick="posthog.capture('cta_clicked',{page:'v3',location:'hero'})">Start Your Free 7-Day Trial</a>
+      <span class="hero-trust">No credit card required to start</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOOK BANNER -->
+<div class="hook-banner">
+  <p>Over <strong>58% of recreational cyclists</strong> deal with chronic joint pain that never fully resolves. Not because they're doing too much — because they're <strong>missing one thing.</strong></p>
+</div>
+
+<!-- 3 JOINTS -->
+<section class="section-gray">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-h2">Three Joints. One Pattern. One Fix.</h2>
+    <p class="section-sub">Every cyclist has a weak link. Most have three. Here's what's happening inside your body on every ride.</p>
+
+    <div class="joints-grid">
+
+      <!-- KNEE -->
+      <div class="joint-card">
+        <div class="joint-header">
+          <div class="joint-number">1</div>
+          <div>
+            <div class="joint-title">🦵 The Knee</div>
+            <div class="joint-subtitle">IT Band &amp; Patellar Tracking</div>
+          </div>
+        </div>
+        <div class="joint-grid">
+          <div class="joint-block">
+            <h4>What Happens</h4>
+            <p>Your knee flexes and extends roughly 10,000 times per hour on the bike. With every revolution, the IT band and patellar tendon absorb stress that your glutes and hip stabilizers should be managing.</p>
+          </div>
+          <div class="joint-block">
+            <h4>Why Cycling Makes It Worse</h4>
+            <p>The fixed pedaling motion trains your knee to track in one plane — but imbalanced supporting muscles let it drift inward, creating friction and inflammation with every stroke.</p>
+          </div>
+        </div>
+        <div class="warning-signs">
+          <h4>⚠ Warning Signs You're There</h4>
+          <ul>
+            <li>Clicking or popping on the outside of the knee</li>
+            <li>Sharp pain on the lateral knee, especially after hour 1</li>
+            <li>Pain going downstairs or squatting the day after a ride</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- HIP -->
+      <div class="joint-card">
+        <div class="joint-header">
+          <div class="joint-number">2</div>
+          <div>
+            <div class="joint-title">🏃 The Hip</div>
+            <div class="joint-subtitle">Hip Flexor &amp; Psoas Tightness</div>
+          </div>
+        </div>
+        <div class="joint-grid">
+          <div class="joint-block">
+            <h4>What Happens</h4>
+            <p>Spending hours bent at 90° causes your hip flexors — especially the psoas — to shorten and tighten. This creates anterior pelvic tilt: your pelvis tips forward, compressing your lower back and reducing power transfer.</p>
+          </div>
+          <div class="joint-block">
+            <h4>Why Cycling Makes It Worse</h4>
+            <p>Unlike running, cycling never takes the hip through full extension. The hip flexors are perpetually contracted and never fully lengthened, training them to stay short even off the bike.</p>
+          </div>
+        </div>
+        <div class="warning-signs">
+          <h4>⚠ Warning Signs You're There</h4>
+          <ul>
+            <li>Tightness at the top of the pedal stroke (pulling up feels restricted)</li>
+            <li>Low back ache that starts after 45+ minutes in the saddle</li>
+            <li>Hip "impingement" feeling when climbing steep grades</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LOWER BACK -->
+      <div class="joint-card">
+        <div class="joint-header">
+          <div class="joint-number">3</div>
+          <div>
+            <div class="joint-title">🔙 The Lower Back</div>
+            <div class="joint-subtitle">Lumbar Compression &amp; Glute Shutdown</div>
+          </div>
+        </div>
+        <div class="joint-grid">
+          <div class="joint-block">
+            <h4>What Happens</h4>
+            <p>In the aero position, your lumbar spine rounds into sustained flexion. Combined with glutes that have essentially shut off, your lower back muscles compensate by overworking — leading to chronic compression and fatigue.</p>
+          </div>
+          <div class="joint-block">
+            <h4>Why Cycling Makes It Worse</h4>
+            <p>Weak glutes mean your back tries to do the power generation work instead. The more hours you log, the more ingrained this compensation pattern becomes — until it becomes your permanent movement default.</p>
+          </div>
+        </div>
+        <div class="warning-signs">
+          <h4>⚠ Warning Signs You're There</h4>
+          <ul>
+            <li>Stiffness getting off the bike that takes 10+ minutes to ease</li>
+            <li>Back pain that progressively worsens over a long ride</li>
+            <li>Feeling like you "sit into" your back rather than engaging your core</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ROOT CAUSE -->
+<div class="root-cause">
+  <div class="container">
+    <div class="section-label">The Root Cause</div>
+    <h2 class="section-h2">It's Not the Miles. It's the Pattern.</h2>
+    <p class="section-sub">All three problems trace back to the same root cause — and it's not what most cyclists think.</p>
+    <div class="root-cause-box">
+      <p>Your body adapts to what you do most. If you're on a bike <strong>5–10 hours a week</strong>, it adapts to that position. Certain muscles become dominant and overactive. Others become weak and inhibited. This creates <strong>muscle imbalance</strong> — and imbalanced muscles put joints under stress they were never designed to handle.</p>
+      <br>
+      <p>The cycling position is biomechanically efficient for producing power — but it's also one of the most one-sided, repetitive movement patterns in sport. <strong>Without targeted intervention, the body breaks down. Every time.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUTION -->
+<section class="section-white">
+  <div class="container">
+    <div class="solution-grid">
+      <div class="solution-left">
+        <div class="section-label">The Solution</div>
+        <h2 class="section-h2">You Can't Out-Stretch a Bad Pattern</h2>
+        <p class="lead">Random stretching doesn't fix muscle imbalance. You need a sequential program that resets the entire muscle chain in the right order — the way it was designed to work.</p>
+        <ul class="features-list">
+          <li>
+            <div class="feat-icon">⏱</div>
+            <div class="feat-text">
+              <strong>Structured daily routines, 15–20 minutes</strong>
+              <span>Short enough to do consistently. Long enough to actually work.</span>
+            </div>
+          </li>
+          <li>
+            <div class="feat-icon">🚴</div>
+            <div class="feat-text">
+              <strong>Built specifically for cyclists</strong>
+              <span>Not generic yoga or PT exercises. Every movement is designed around the demands of riding.</span>
+            </div>
+          </li>
+          <li>
+            <div class="feat-icon">🎯</div>
+            <div class="feat-text">
+              <strong>Targets the root cause, not just symptoms</strong>
+              <span>We reset the muscle imbalance so the joint pain has nowhere to come from.</span>
+            </div>
+          </li>
+          <li>
+            <div class="feat-icon">📅</div>
+            <div class="feat-text">
+              <strong>Feel the difference in 2 weeks</strong>
+              <span>Most members notice reduced stiffness and improved power within 14 days.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="solution-right">
+        <div class="program-name">Dynamic Cyclist</div>
+        <p>The mobility &amp; flexibility program built specifically for cyclists who want to ride pain-free, perform better, and stay on the bike for years to come.</p>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); margin-bottom:20px;">7-day free trial · Cancel anytime</p>
+        <a href="https://new.dynamiccyclist.com" class="btn-primary" onclick="posthog.capture('cta_clicked',{page:'v3',location:'solution'})">Start Your Free 7-Day Trial</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section-gray">
+  <div class="container">
+    <div class="section-label">Real Results</div>
+    <h2 class="section-h2">Cyclists Who Fixed the Problem</h2>
+    <p class="section-sub">Don't take our word for it. Here's what happened when they stopped masking the symptom and fixed the root cause.</p>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">I'd had outside knee pain for two years. Tried physio, new insoles, even a full bike fit. Within three weeks of Dynamic Cyclist, it was gone. Turns out my glutes weren't firing properly — and that was sending all the load to my IT band. Simple fix once you know what you're actually dealing with.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MR</div>
+          <div>
+            <div class="testi-name">Mike R., 47</div>
+            <div class="testi-detail">Weekend rider · Fixed: Knee</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">My lower back was wrecked after anything over 60 miles. I just accepted it as "part of cycling." Dynamic Cyclist showed me my glutes had completely shut off and my back was compensating for everything. Two months in, I did a 100-miler with zero back pain. First time in five years.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">DS</div>
+          <div>
+            <div class="testi-name">David S., 52</div>
+            <div class="testi-detail">Gran fondo rider · Fixed: Lower back</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-quote">The hip tightness at the top of my pedal stroke was killing my power on climbs. I thought it was just age. Turns out it was hip flexor shortening from years of riding without any mobility work. Four weeks of the program and my cadence improved by 8 rpm — because I could actually complete the pedal stroke now.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">TC</div>
+          <div>
+            <div class="testi-name">Tom C., 44</div>
+            <div class="testi-detail">Club rider · Fixed: Hip flexibility</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="container">
+    <h2 class="section-h2">Start Free. Stay Pain-Free.</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.65); max-width:560px; margin:0 auto 16px;">Try everything for 7 days at zero cost. Cancel anytime. No commitment.</p>
+    <p class="trial-note">After your trial: <strong>$9.99/month</strong> or save with the annual plan</p>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="price-label">Monthly</div>
+        <div class="price-amount"><sup>$</sup>9<span>.99/mo</span></div>
+        <div class="price-note">Billed monthly · Cancel anytime</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Best Value — Save 27%</div>
+        <div class="price-label">Annual</div>
+        <div class="price-amount"><sup>$</sup>87<span>/yr</span></div>
+        <div class="price-note">Just $7.25/month · Best value</div>
+      </div>
+    </div>
+    <a href="https://new.dynamiccyclist.com" class="btn-primary" style="font-size:1.2rem; padding:20px 48px;" onclick="posthog.capture('cta_clicked',{page:'v3',location:'pricing'})">Start Your Free 7-Day Trial →</a>
+    <p style="color:rgba(255,255,255,0.35); font-size:0.85rem; margin-top:16px;">No credit card required · Cancel anytime · Instant access</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Dynamic Cyclist. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

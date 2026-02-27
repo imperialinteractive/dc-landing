@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Leaving 10 Watts on the Table | Dynamic Cyclist</title>
+  <meta name="description" content="The highest ROI marginal gain most cyclists never address. It's not your wheels. It's not your power meter. And it costs $9.99/month.">
+  <!-- META PIXEL: insert DC pixel ID here -->
+  <script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+" (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    posthog.init('phc_ru5aBEst81batGjqgUh88EFHlYCxEikwHKEjdrkN0MW', {api_host: 'https://us.i.posthog.com'});
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #0070f3;
+      --blue-dark: #0051b3;
+      --blue-glow: rgba(0,112,243,0.3);
+      --hero-bg: #0a0f1a;
+      --text: #1a1a1a;
+      --text-light: #555;
+      --white: #fff;
+      --gray-blue: #f5f8ff;
+      --border: #e0e8ff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); line-height: 1.6; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10,15,26,0.96); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      border-bottom: 1px solid rgba(0,112,243,0.2);
+    }
+    .nav-logo { color: #fff; font-size: 1.2rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; }
+    .nav-logo span { color: var(--blue); }
+    .nav-cta {
+      background: var(--blue); color: #fff; text-decoration: none;
+      padding: 10px 22px; border-radius: 6px; font-weight: 700; font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    /* HERO */
+    .hero {
+      background: var(--hero-bg);
+      padding: 130px 5% 90px;
+      min-height: 90vh;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(0,112,243,0.15) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(0,112,243,0.08) 0%, transparent 50%);
+    }
+    /* Grid lines */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(0,112,243,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,112,243,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner { max-width: 820px; position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,112,243,0.15); border: 1px solid rgba(0,112,243,0.4);
+      color: var(--blue); font-size: 0.8rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 7px 16px; border-radius: 100px; margin-bottom: 28px;
+    }
+    .hero-tag::before { content: '⚡'; }
+    .hero h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      font-weight: 900; color: #fff; line-height: 1.05;
+      letter-spacing: -2px; margin-bottom: 28px;
+    }
+    .hero h1 .watts { color: var(--blue); }
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      color: rgba(255,255,255,0.7); max-width: 680px; margin-bottom: 44px;
+      line-height: 1.75;
+    }
+    .hero-cta-wrap { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--blue); color: #fff; text-decoration: none;
+      padding: 18px 40px; border-radius: 8px; font-weight: 800; font-size: 1.1rem;
+      transition: all 0.2s; border: none; cursor: pointer;
+      box-shadow: 0 4px 24px var(--blue-glow);
+    }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,112,243,0.5); }
+    .hero-trust { color: rgba(255,255,255,0.45); font-size: 0.9rem; }
+
+    /* DATA SECTION */
+    section { padding: 88px 5%; }
+    .section-white { background: var(--white); }
+    .section-blue { background: var(--gray-blue); }
+    .container { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+    }
+    .section-h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-sub { font-size: 1.1rem; color: var(--text-light); max-width: 640px; margin-bottom: 52px; line-height: 1.7; }
+
+    /* COMPARISON TABLE */
+    .gains-table { width: 100%; border-collapse: collapse; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.08); }
+    .gains-table thead { background: var(--hero-bg); color: #fff; }
+    .gains-table th {
+      padding: 18px 24px; text-align: left; font-size: 0.8rem;
+      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 700;
+    }
+    .gains-table th:not(:first-child) { text-align: center; }
+    .gains-table tbody tr { border-bottom: 1px solid var(--border); }
+    .gains-table tbody tr:last-child { border-bottom: none; }
+    .gains-table tbody tr.highlight { background: rgba(0,112,243,0.06); }
+    .gains-table td { padding: 20px 24px; vertical-align: middle; }
+    .gains-table td:not(:first-child) { text-align: center; }
+    .gain-name { font-weight: 700; font-size: 1rem; display: block; margin-bottom: 4px; }
+    .gain-desc { font-size: 0.85rem; color: var(--text-light); }
+    .gain-watts {
+      font-weight: 800; font-size: 1.1rem; color: var(--text);
+    }
+    .gain-watts.top { color: var(--blue); }
+    .gain-cost { font-weight: 600; font-size: 1rem; color: var(--text-light); }
+    .gain-cost.top { color: var(--blue); font-weight: 800; font-size: 1.1rem; }
+    .roi-badge {
+      display: inline-block;
+      background: var(--blue); color: #fff;
+      font-size: 0.7rem; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 100px;
+      margin-top: 4px;
+    }
+    .table-insight {
+      background: rgba(0,112,243,0.08); border: 1px solid rgba(0,112,243,0.2);
+      border-radius: 12px; padding: 20px 28px; margin-top: 24px;
+      font-size: 1rem; color: var(--text); line-height: 1.7;
+    }
+    .table-insight strong { color: var(--blue); }
+
+    /* WHY IT WORKS */
+    .mechanisms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .mech-card {
+      background: var(--hero-bg); border-radius: 16px; padding: 36px;
+      position: relative; overflow: hidden;
+    }
+    .mech-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--blue);
+    }
+    .mech-num {
+      font-size: 3rem; font-weight: 900; color: rgba(0,112,243,0.2);
+      line-height: 1; margin-bottom: 12px;
+    }
+    .mech-title { font-size: 1.2rem; font-weight: 800; color: #fff; margin-bottom: 12px; }
+    .mech-text { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.7; }
+
+    /* NOT YOGA */
+    .not-yoga {
+      background: var(--hero-bg); padding: 88px 5%;
+    }
+    .not-yoga-inner { max-width: 860px; margin: 0 auto; }
+    .not-yoga .section-label { color: var(--blue); }
+    .not-yoga .section-h2 { color: #fff; margin-bottom: 24px; }
+    .objection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+    .obj-col { }
+    .obj-col h3 { font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+    .obj-col.myth h3 { color: rgba(255,255,255,0.4); }
+    .obj-col.reality h3 { color: var(--blue); }
+    .obj-item {
+      padding: 14px 18px; border-radius: 10px; margin-bottom: 12px;
+      font-size: 0.95rem; line-height: 1.5;
+    }
+    .obj-col.myth .obj-item { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.3); }
+    .obj-col.reality .obj-item { background: rgba(0,112,243,0.12); color: rgba(255,255,255,0.85); border-left: 3px solid var(--blue); }
+    .not-yoga-quote {
+      background: rgba(0,112,243,0.1); border: 1px solid rgba(0,112,243,0.25);
+      border-radius: 16px; padding: 36px; margin-top: 40px; text-align: center;
+    }
+    .not-yoga-quote p { font-size: clamp(1rem, 2vw, 1.25rem); color: #fff; line-height: 1.8; }
+    .not-yoga-quote strong { color: var(--blue); }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+    .testi-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px; position: relative;
+    }
+    .testi-stars { color: var(--blue); font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
+    .testi-metric {
+      display: inline-block;
+      background: rgba(0,112,243,0.08); color: var(--blue);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .testi-quote { font-size: 0.95rem; color: var(--text); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-avatar {
+      width: 46px; height: 46px; border-radius: 50%;
+      background: var(--blue); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1rem; flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 0.95rem; }
+    .testi-detail { font-size: 0.8rem; color: var(--text-light); }
+
+    /* PRICING */
+    .pricing-section { background: var(--hero-bg); padding: 88px 5%; text-align: center; }
+    .pricing-section .section-h2 { color: #fff; }
+    .pricing-section .section-sub { color: rgba(255,255,255,0.65); margin: 0 auto 48px; }
+    .pricing-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 680px; margin: 0 auto 40px; }
+    .price-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 32px; color: #fff; position: relative;
+    }
+    .price-card.featured { background: rgba(0,112,243,0.15); border-color: var(--blue); }
+    .price-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--blue); color: #fff; font-size: 0.75rem; font-weight: 700;
+      padding: 4px 16px; border-radius: 20px; white-space: nowrap;
+    }
+    .price-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    .price-amount { font-size: 3rem; font-weight: 900; line-height: 1; }
+    .price-amount sup { font-size: 1.2rem; vertical-align: top; margin-top: 10px; }
+    .price-amount span { font-size: 1rem; font-weight: 400; color: rgba(255,255,255,0.5); }
+    .price-note { font-size: 0.85rem; color: rgba(255,255,255,0.45); margin-top: 8px; }
+
+    /* FOOTER */
+    footer { background: #060a12; padding: 32px 5%; text-align: center; }
+    footer p { color: rgba(255,255,255,0.25); font-size: 0.85rem; }
+
+    @media (max-width: 768px) {
+      .objection-grid { grid-template-columns: 1fr; }
+      nav { padding: 0 4%; }
+      .hero { padding: 100px 4% 60px; min-height: auto; }
+      section { padding: 64px 4%; }
+      .not-yoga { padding: 64px 4%; }
+      .gains-table { font-size: 0.9rem; }
+      .gains-table th, .gains-table td { padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .gains-table { display: block; overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://new.dynamiccyclist.com" class="nav-logo">Dynamic<span>Cyclist</span></a>
+  <a href="https://new.dynamiccyclist.com" class="nav-cta" onclick="posthog.capture('cta_clicked',{page:'v10',location:'nav'})">Start Free Trial →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Marginal Gains · Performance Protocol</div>
+    <h1>You're Leaving <span class="watts">10 Watts</span> on the Table.</h1>
+    <p class="hero-sub">You've upgraded your wheels. Dialled your nutrition. Trained your zones. But there's one variable most cyclists never address — and it's costing you more than all of those combined.</p>
+    <div class="hero-cta-wrap">
+      <a href="https://new.dynamiccyclist.com" class="btn-primary" onclick="posthog.capture('cta_clicked',{page:'v10',location:'hero'})">Unlock Your Last 10 Watts — Start Free</a>
+      <span class="hero-trust">7-day free trial · No card required</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARGINAL GAINS TABLE -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-label">Performance Analysis</div>
+    <h2 class="section-h2">The Marginal Gains Most Cyclists Ignore</h2>
+    <p class="section-sub">Here's how mobility compares to the upgrades cyclists obsess over. The numbers might surprise you.</p>
+
+    <table class="gains-table">
+      <thead>
+        <tr>
+          <th>Upgrade</th>
+          <th>Watts Gained</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span class="gain-name">Aerodynamic Equipment</span>
+            <span class="gain-desc">Aero helmet, skinsuit, deep-section wheels</span>
+          </td>
+          <td><span class="gain-watts">20–40W</span></td>
+          <td><span class="gain-cost">$3,000–8,000</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="gain-name">Lightweight Carbon Wheels</span>
+            <span class="gain-desc">Top-tier climbing or aero wheelset</span>
+          </td>
+          <td><span class="gain-watts">10–20W</span></td>
+          <td><span class="gain-cost">$2,000–5,000</span></td>
+        </tr>
+        <tr>
+          <td>
+            <span class="gain-name">Power Meter Training</span>
+            <span class="gain-desc">Structured zone-based training program</span>
+          </td>
+          <td><span class="gain-watts">3–5%</span></td>
+          <td><span class="gain-cost">$500–1,500</span></td>
+        </tr>
+        <tr class="highlight">
+          <td>
+            <span class="gain-name" style="color:var(--blue);">Mobility &amp; Muscle Balance</span>
+            <span class="gain-desc">Dynamic Cyclist — 15–20 min/day protocol</span>
+            <span class="roi-badge">Highest ROI</span>
+          </td>
+          <td><span class="gain-watts top">8–15W + injury prevention</span></td>
+          <td><span class="gain-cost top">$9.99/month</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="table-insight">
+      <strong>The uncomfortable truth:</strong> Most cyclists spend thousands chasing watts through equipment — while ignoring the single variable with the highest return for the lowest investment. Mobility isn't a recovery tool. It's a <strong>performance multiplier.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- WHY IT WORKS -->
+<section class="section-blue">
+  <div class="container">
+    <div class="section-label">The Mechanisms</div>
+    <h2 class="section-h2">Why Mobility = Watts</h2>
+    <p class="section-sub">Three biomechanical pathways — each one measurable, each one addressable with the right protocol.</p>
+
+    <div class="mechanisms-grid">
+      <div class="mech-card">
+        <div class="mech-num">01</div>
+        <div class="mech-title">Hip Extension Efficiency</div>
+        <p class="mech-text">Restricted hip flexors reduce your power stroke length. When your hip can't fully extend on the downstroke, you're leaving raw watts on the table with every single pedal revolution. More range of motion = more work done per stroke = more watts for the same effort.</p>
+      </div>
+      <div class="mech-card">
+        <div class="mech-num">02</div>
+        <div class="mech-title">Aerodynamic Position</div>
+        <p class="mech-text">Tight hamstrings and lower back prevent you from holding an aggressive, low position without compensating through your lumbar spine. Fix the flexibility, and you can maintain the aero tuck — the same position that pros spend $8,000 on equipment to simulate.</p>
+      </div>
+      <div class="mech-card">
+        <div class="mech-num">03</div>
+        <div class="mech-title">Fatigue Resistance</div>
+        <p class="mech-text">Muscle imbalances force compensating muscles to work harder than they should. Your back is doing work your glutes should be doing. Your hip flexors are doing what your core should manage. This burns matches you'd otherwise have for the final climb.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOT YOGA -->
+<div class="not-yoga">
+  <div class="not-yoga-inner container">
+    <div class="section-label">Addressing the Objection</div>
+    <h2 class="section-h2">This Is Not Yoga.</h2>
+    <p style="font-size:1.1rem; color:rgba(255,255,255,0.65); line-height:1.8; max-width:640px;">We know what you're thinking. Here's the difference between what cyclists assume mobility work is — and what Dynamic Cyclist actually is.</p>
+
+    <div class="objection-grid">
+      <div class="obj-col myth">
+        <h3>❌ What cyclists assume</h3>
+        <div class="obj-item">Generic yoga or stretching routines</div>
+        <div class="obj-item">Vague "feel better" goals</div>
+        <div class="obj-item">One hour of awkward floor exercises</div>
+        <div class="obj-item">No connection to cycling performance</div>
+        <div class="obj-item">Something you do when you're injured</div>
+      </div>
+      <div class="obj-col reality">
+        <h3>✓ What Dynamic Cyclist is</h3>
+        <div class="obj-item">Built specifically around cycling biomechanics</div>
+        <div class="obj-item">Measurable: power, position, pain reduction</div>
+        <div class="obj-item">15–20 minutes. Sequential. Efficient.</div>
+        <div class="obj-item">Directly mapped to power output and injury prevention</div>
+        <div class="obj-item">A performance protocol for active cyclists</div>
+      </div>
+    </div>
+
+    <div class="not-yoga-quote">
+      <p>"Dynamic Cyclist isn't a flexibility class. It's a <strong>performance protocol.</strong> 15–20 minutes designed specifically around the demands of cycling. <strong>Sequential. Targeted. Measurable.</strong>"</p>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-label">Real Results</div>
+    <h2 class="section-h2">Cyclists Who Found Their Watts</h2>
+    <p class="section-sub">Performance-focused riders who stopped ignoring the one variable nobody talks about.</p>
+
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-metric">+12W avg power</div>
+        <p class="testi-quote">I was sceptical. A mobility program isn't exactly where your brain goes when you want more watts. But after 6 weeks, my average power on my Thursday group ride was up 12 watts with the same perceived effort. The hip flexor work is what did it — I can finally complete a full pedal stroke.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">JM</div>
+          <div>
+            <div class="testi-name">James M., 48</div>
+            <div class="testi-detail">Cat 4 · Rides 5x/week</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-metric">Held aero position 40% longer</div>
+        <p class="testi-quote">I had a bike fit done three times. Every fitter said my flexibility was limiting my position. Started Dynamic Cyclist and within 5 weeks I was holding my aero bars comfortably for 20+ minutes at a time. My TT times dropped almost immediately. It's not equipment — it's this.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RK</div>
+          <div>
+            <div class="testi-name">Rob K., 43</div>
+            <div class="testi-detail">Triathlete · Cat 3 TT</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-metric">Faster on climbs</div>
+        <p class="testi-quote">My climbing power was always worse than my flat power. My coach couldn't explain it. Dynamic Cyclist explained it: my glutes were shutting off on steep pitches because of hip flexor tightness. Fixed that in a month. My w/kg on 8%+ climbs jumped by 0.3. That's not placebo — that's biomechanics.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">PL</div>
+          <div>
+            <div class="testi-name">Paul L., 51</div>
+            <div class="testi-detail">Gran fondo racer · 12 hrs/week</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section">
+  <div class="container">
+    <h2 class="section-h2">The Highest-ROI Upgrade You Haven't Made</h2>
+    <p class="section-sub">7 days free. Then less than a coffee per week. Cancel anytime.</p>
+    <div class="pricing-cards">
+      <div class="price-card">
+        <div class="price-label">Monthly</div>
+        <div class="price-amount"><sup>$</sup>9<span>.99/mo</span></div>
+        <div class="price-note">Billed monthly · Cancel anytime</div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Best Value — Save 27%</div>
+        <div class="price-label">Annual</div>
+        <div class="price-amount"><sup>$</sup>87<span>/yr</span></div>
+        <div class="price-note">$7.25/month · Best value</div>
+      </div>
+    </div>
+    <a href="https://new.dynamiccyclist.com" class="btn-primary" style="font-size:1.15rem; padding:20px 48px;" onclick="posthog.capture('cta_clicked',{page:'v10',location:'pricing'})">Unlock Your Last 10 Watts — Start Free →</a>
+    <p style="color:rgba(255,255,255,0.3); font-size:0.85rem; margin-top:16px;">No credit card required · Instant access · Cancel anytime</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Dynamic Cyclist. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
